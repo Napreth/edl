@@ -136,6 +136,34 @@ pip3 install .
 curl.exe -O https://raw.githubusercontent.com/bkerler/edl/master/install_edl_win10_win11.ps1; .\install_edl_win10_win11.ps1
 ```
 
+The installer runs without administrator privileges. It reuses Git and Python
+3.10+ if already available, and otherwise uses `winget --scope user` to install
+missing prerequisites. EDL is installed under `%LOCALAPPDATA%\Programs\edl`
+by default, with a dedicated `.venv` and an entry in the **user** PATH only.
+It does not change the system Python environment or install USB drivers.
+
+To choose an installation directory or prevent automatic installation of Git
+and Python (missing prerequisites then cause an error), use:
+
+```powershell
+.\install_edl_win10_win11.ps1 -InstallDir 'D:\Apps\edl' -NoInstallPrerequisites
+```
+
+To remove an installation made by this script:
+
+```powershell
+.\install_edl_win10_win11.ps1 -Uninstall
+```
+
+Use `-InstallDir` together with `-Uninstall` when removing a custom location.
+This leaves any previously installed Git, Python and USB drivers untouched.
+Alternatively, install the Python command separately with `pipx`:
+
+```powershell
+pipx install git+https://github.com/bkerler/edl.git
+```
+
+
 #### Method 2 - Manual
 #### Install python + git
 - Install Python 3.10 or newer and git

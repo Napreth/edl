@@ -47,5 +47,7 @@ beagle_to_loader = "edlclient.Tools.beagle_to_loader:main"
 [ tool.setuptools ]
 include-package-data = true
 zip-safe = false
+# The console entry-point compatibility wrapper imports the top-level module.
+py-modules = ["edl"]
 
 [ tool.setuptools.packages.find ]

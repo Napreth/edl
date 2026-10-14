@@ -1,3 +1,3 @@
 @echo off
 title EDLClient
-python "%~dp0edl" %*
+python "%~dp0edl.py" %*
